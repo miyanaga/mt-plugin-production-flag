@@ -1,0 +1,25 @@
+id: ProductionFlag
+name: ProductionFlag
+version: 0.1.0
+schema_version: 0.01
+l10n_class: MT::ProductionFlag::L10N
+
+object_types:
+    entry:
+        production_flag: smallint indexed
+
+tags:
+    function:
+        EntryProductionFlag: $ProductionFlag::MT::ProductionFlag::Tags::tag_EntryProductionFlag
+    filters:
+        Entries:
+            production_flag:
+                handler: $ProductionFlag::MT::ProductionFlag::Tags::filter_entries
+
+list_properties: $ProductionFlag::MT::ProductionFlag::CMS::list_properties
+
+applications:
+    cms:
+        callbacks:
+            template_param.edit_entry: $ProductionFlag::MT::ProductionFlag::CMS::template_param_edit_entry
+            cms_pre_save.entry: $ProductionFlag::MT::ProductionFlag::CMS::cms_pre_save_entry

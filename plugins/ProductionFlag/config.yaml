@@ -1,6 +1,6 @@
 id: ProductionFlag
 name: ProductionFlag
-version: 0.1.0
+version: 0.2.0
 schema_version: 0.01
 l10n_class: MT::ProductionFlag::L10N
 
@@ -23,3 +23,14 @@ applications:
         callbacks:
             template_param.edit_entry: $ProductionFlag::MT::ProductionFlag::CMS::template_param_edit_entry
             cms_pre_save.entry: $ProductionFlag::MT::ProductionFlag::CMS::cms_pre_save_entry
+
+permissions:
+    blog.set_production_flag:
+        group: auth_pub
+        label: Set entry production flag
+        order: 1500
+        permitted_action:
+            set_production_flag: 1
+    blog.administer_blog:
+        inherit_from:
+            - blog.set_production_flag

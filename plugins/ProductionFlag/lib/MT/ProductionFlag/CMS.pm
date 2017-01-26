@@ -6,6 +6,9 @@ use warnings;
 sub template_param_edit_entry {
     my ( $cb, $app, $param, $tmpl ) = @_;
 
+    my $perms = $app->permissions;
+    return 1 unless $perms->can_do('set_production_flag');
+
     my $node = $tmpl->createElement('app:setting', { id => 'production_flag', label_class => 'top-label' });
     $node->innerHTML(<<'MTML');
 <__trans_section component="ProductionFlag">

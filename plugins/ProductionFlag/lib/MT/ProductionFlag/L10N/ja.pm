@@ -10,6 +10,7 @@ use vars qw( %Lexicon );
     'Prod.' => '本番公開',
     'Enabled' => '有効',
     'Disabled' => '無効',
+    'Set entry production flag' => '記事の本番公開フラグの操作',
 );
 
 1;
